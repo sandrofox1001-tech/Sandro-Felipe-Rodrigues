@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .print-only {
+    display: none !important;
+  }
+}
+
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+  }
+  
+  .screen-only {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  /* Prevent large cards or tables breaking mid-page */
+  tr, .bg-white, div {
+    page-break-inside: avoid;
+  }
+}

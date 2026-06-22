@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: oklch(0.09 0.01 240);
+  --color-foreground: oklch(0.92 0.01 240);
+  --color-card: oklch(0.12 0.01 240);
+  --color-card-foreground: oklch(0.92 0.01 240);
+  --color-popover: oklch(0.12 0.01 240);
+  --color-popover-foreground: oklch(0.92 0.01 240);
+  --color-primary: oklch(0.78 0.15 175);
+  --color-primary-foreground: oklch(0.09 0.01 240);
+  --color-secondary: oklch(0.18 0.02 240);
+  --color-secondary-foreground: oklch(0.92 0.01 240);
+  --color-muted: oklch(0.18 0.02 240);
+  --color-muted-foreground: oklch(0.55 0.02 240);
+  --color-accent: oklch(0.18 0.02 240);
+  --color-accent-foreground: oklch(0.92 0.01 240);
+  --color-destructive: oklch(0.62 0.22 25);
+  --color-border: oklch(0.2 0.02 240);
+  --color-input: oklch(0.2 0.02 240);
+  --color-ring: oklch(0.78 0.15 175);
+  --color-chart-1: oklch(0.78 0.15 175);
+  --color-chart-2: oklch(0.65 0.18 230);
+  --color-chart-3: oklch(0.68 0.19 45);
+  --color-chart-4: oklch(0.72 0.17 140);
+  --color-chart-5: oklch(0.75 0.16 300);
+  --radius: 0.5rem;
+
+  /* Custom brand colors */
+  --color-brand-teal: #00d4aa;
+  --color-brand-blue: #0099ff;
+  --color-brand-orange: #ff6b35;
+  --color-brand-bg: #0d1117;
+  --color-brand-surface: #161b22;
+  --color-brand-card: #1c2230;
+  --color-brand-border: #21282f;
+  --color-brand-text: #e6edf3;
+  --color-brand-muted: #8b949e;
+  --color-brand-subtle: #6e7681;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1280px;
+  }
+
+  .flex {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #161b22;
+}
+::-webkit-scrollbar-thumb {
+  background: #21282f;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 170, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.6); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 300ms; }

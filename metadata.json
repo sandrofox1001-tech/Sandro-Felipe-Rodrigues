@@ -1,0 +1,6 @@
+{
+  "name": "Analisador de Projetos",
+  "description": "Análise inteligente de escopos de projetos para estimar lista de materiais, custos de mão de obra e prazos de execução.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
